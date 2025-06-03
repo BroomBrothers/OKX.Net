@@ -672,8 +672,8 @@ internal class OKXRestClientUnifiedApiTrading : IOKXRestClientUnifiedApiTrading
         string? algoId = null,
         InstrumentType? instrumentType = null,
         string? symbol = null,
-        DateTime? startTime = null,
-        DateTime? endTime = null,
+        string? afterAlgoId = null, // Previously DateTime? type.  OKX have confirmed this value should be an algoId
+        string? beforeAlgoId = null, // Previously DateTime? type.  OKX have confirmed this value should be an algoId
         int limit = 100,
         CancellationToken ct = default)
     {
@@ -684,8 +684,8 @@ internal class OKXRestClientUnifiedApiTrading : IOKXRestClientUnifiedApiTrading
         parameters.AddEnum("ordType", algoOrderType);
         parameters.AddOptionalParameter("algoId", algoId);
         parameters.AddOptionalParameter("instId", symbol);
-        parameters.AddOptionalParameter("before", DateTimeConverter.ConvertToMilliseconds(startTime)?.ToString(CultureInfo.InvariantCulture));
-        parameters.AddOptionalParameter("after", DateTimeConverter.ConvertToMilliseconds(endTime)?.ToString(CultureInfo.InvariantCulture));
+        parameters.AddOptionalParameter("before", afterAlgoId); // OKX have confirmed these values are incorrectly inverted ('before' returns orders that were placed after the provided algoId) 
+        parameters.AddOptionalParameter("after", beforeAlgoId); // OKX have confirmed these values are incorrectly inverted ('after' returns orders that were placed before the provided algoId) 
         parameters.AddOptionalParameter("limit", limit.ToString());
         parameters.AddOptionalEnum("instType", instrumentType);
 
@@ -701,8 +701,8 @@ internal class OKXRestClientUnifiedApiTrading : IOKXRestClientUnifiedApiTrading
         string? algoId = null,
         InstrumentType? instrumentType = null,
         string? symbol = null,
-        DateTime? startTime = null,
-        DateTime? endTime = null,
+        string? afterAlgoId = null, // Previously DateTime? type.  OKX have confirmed this value should be an algoId
+        string? beforeAlgoId = null, // Previously DateTime? type.  OKX have confirmed this value should be an algoId
         int limit = 100,
         CancellationToken ct = default)
     {
@@ -713,8 +713,8 @@ internal class OKXRestClientUnifiedApiTrading : IOKXRestClientUnifiedApiTrading
         parameters.AddEnum("ordType", algoOrderType);
         parameters.AddOptionalParameter("algoId", algoId);
         parameters.AddOptionalParameter("instId", symbol);
-        parameters.AddOptionalParameter("before", DateTimeConverter.ConvertToMilliseconds(startTime)?.ToString(CultureInfo.InvariantCulture));
-        parameters.AddOptionalParameter("after", DateTimeConverter.ConvertToMilliseconds(endTime)?.ToString(CultureInfo.InvariantCulture));
+        parameters.AddOptionalParameter("before", afterAlgoId); // OKX have confirmed these values are incorrectly inverted ('before' returns orders that were placed after the provided algoId) 
+        parameters.AddOptionalParameter("after", beforeAlgoId); // OKX have confirmed these values are incorrectly inverted ('after' returns orders that were placed before the provided algoId) 
         parameters.AddOptionalParameter("limit", limit.ToString());
 
         parameters.AddOptionalEnum("state", algoOrderState);
