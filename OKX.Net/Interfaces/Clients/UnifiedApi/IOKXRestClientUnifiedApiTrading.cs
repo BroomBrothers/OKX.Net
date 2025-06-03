@@ -140,12 +140,12 @@ public interface IOKXRestClientUnifiedApiTrading
     /// <param name="algoId">Algo ID</param>
     /// <param name="instrumentType">Instrument Type</param>
     /// <param name="symbol">Symbol, for example `ETH-USDT`</param>
-    /// <param name="afterAlgoId">Pagination of data to return orders placed after the supplied algoId</param>
-    /// <param name="beforeAlgoId">Pagination of data to return orders placed before the supplied algoId</param>
+    /// <param name="afterDate">Pagination of data to return orders placed after the supplied DateTime</param>
+    /// <param name="beforeDate">Pagination of data to return orders placed before the supplied DateTime</param>
     /// <param name="limit">Number of results per request. The maximum is 100; the default is 100.</param>
     /// <param name="ct">Cancellation Token</param>
     /// <returns></returns>
-    Task<WebCallResult<IEnumerable<OKXAlgoOrder>>> GetAlgoOrderListAsync(AlgoOrderType algoOrderType, string? algoId = null, InstrumentType? instrumentType = null, string? symbol = null, string? afterAlgoId = null, string? beforeAlgoId = null, int limit = 100, CancellationToken ct = default);
+    Task<WebCallResult<IEnumerable<OKXAlgoOrder>>> GetAlgoOrderListAsync(AlgoOrderType algoOrderType, string? algoId = null, InstrumentType? instrumentType = null, string? symbol = null, DateTime? afterDate = null, DateTime? beforeDate = null, int limit = 100, CancellationToken ct = default);
 
     /// <summary>
     /// Get the completed order data of the last 3 months, and the incomplete orders that have been canceled are only reserved for 2 hours.

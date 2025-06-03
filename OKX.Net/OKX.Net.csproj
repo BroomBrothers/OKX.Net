@@ -7,7 +7,7 @@
   <PropertyGroup>
     <PackageId>JK.OKX.Net</PackageId>
     <Authors>JKorf</Authors>
-    <PackageVersion>2.16.1</PackageVersion>
+    <PackageVersion>2.16.1-mirrorly-2</PackageVersion>
     <FileVersion>2.16.1</FileVersion>
     <AssemblyVersion>2.16.1</AssemblyVersion>
     <Description>JK.OKX.Net is client library for accessing the OKX REST and Websocket API. All data is mapped to readable models and enum values. Additional features include automatic websocket (re)connection management, client side rate limiting, an implementation for maintaining a client side order book, easy integration with other exchange client libraries and more.</Description>
